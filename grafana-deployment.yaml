@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: grafana
+  name: grafana
+spec:
+  selector:
+    matchLabels:
+      app: grafana
+  template:
+    metadata:
+      labels:
+        app: grafana
+    spec:
+      containers:
+      - image: grafana/grafana:8.1.5
+        name: grafana
+        volumeMounts:
+        - mountPath: /var/lib/grafana
+          name: grafana-csi-volume
+      securityContext:
+        fsGroup: 1000
+      volumes:
+      - name: grafana-csi-volume
+        persistentVolumeClaim:
+          claimName: grafana-csi-pvc
