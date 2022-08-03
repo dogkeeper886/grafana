@@ -18,4 +18,4 @@ spec:
         - key: kubernetes.io/hostname
           operator: In
           values:
-          - rocky.localdomain    
+          - kube-1.novalocal
