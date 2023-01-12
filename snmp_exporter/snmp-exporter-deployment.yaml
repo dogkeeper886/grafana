@@ -17,4 +17,13 @@ spec:
       - image: prom/snmp-exporter:latest
         imagePullPolicy: IfNotPresent
         name: snmp-exporter
-
+        ports:
+        - containerPort: 9116
+        volumeMounts:
+        - name: config
+          mountPath: /etc/snmp_exporter/snmp.yml
+          subPath: snmp.yml                                  
+      volumes:
+      - name: config
+        configMap:
+          name: snmp-exporter
