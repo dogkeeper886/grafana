@@ -17,4 +17,13 @@ spec:
       - image: prom/prometheus:latest
         imagePullPolicy: IfNotPresent
         name: prometheus
-
+        ports:
+        - containerPort: 9090
+        volumeMounts:
+        - name: config
+          mountPath: /etc/prometheus/prometheus.yml
+          subPath: prometheus.yml                                  
+      volumes:
+      - name: config
+        configMap:
+          name: prometheus
