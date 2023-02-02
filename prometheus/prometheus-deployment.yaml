@@ -23,7 +23,7 @@ spec:
         - name: config
           mountPath: /etc/prometheus/prometheus.yml
           subPath: prometheus.yml
-        - mountPath: /var/lib/mysql
+        - mountPath: /prometheus
           name: prometheus-pv                                              
       volumes:
       - name: config
